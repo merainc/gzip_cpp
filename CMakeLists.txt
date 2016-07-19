@@ -25,3 +25,7 @@ add_executable(gzip_cpp_test ${GZIP_SRCS} ${GZIP_TEST_SRCS} ${GOOGLE_TEST_SRCS})
 
 find_package(ZLIB REQUIRED)
 target_link_libraries(gzip_cpp_test ${ZLIB_LIBRARIES})
+
+file(GLOB INCLUDE_FILES "./include/*.h")
+install(FILES ${INCLUDE_FILES} DESTINATION "include/gzip_cpp")
+install(TARGETS gzip_cpp DESTINATION "lib")
