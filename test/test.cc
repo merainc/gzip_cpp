@@ -1,19 +1,33 @@
 #include <gtest/gtest.h>
 
+#include <list>
+#include <utility>
+
 #include "gzip_cpp.h"
 
 const char* const SOURCE_STRING = "abcdefghijklmnopqrstuvwxyz";
-gzip::Data g_compressed_data;
+gzip::DataList g_compressed_data;
 
 TEST(gzip, compress) {
   gzip::Comp comp;
-  g_compressed_data = comp.process(SOURCE_STRING, strlen(SOURCE_STRING) + 1);
-  EXPECT_TRUE(compressed_data);
+  EXPECT_TRUE(comp.IsSucc());
+  g_compressed_data =
+      comp.Process(SOURCE_STRING, strlen(SOURCE_STRING) + 1, true);
+  EXPECT_TRUE(g_compressed_data.size() > 0);
 }
 
 TEST(gzip, decompress) {
   gzip::Decomp decomp;
-  gzip::Data data = decomp.process(g_compressed_data);
-  EXPECT_TRUE(data);
-  EXPECT_TRUE(strcmp(SOURCE_STRING, data.get()) == 0);
+  EXPECT_TRUE(decomp.IsSucc());
+  bool succ;
+  gzip::DataList out_data_list;
+  for (const gzip::Data& data : g_compressed_data) {
+    gzip::DataList this_out_data_list;
+    std::tie(succ, this_out_data_list) = decomp.Process(data);
+    EXPECT_TRUE(succ);
+    std::copy(this_out_data_list.begin(), this_out_data_list.end(),
+              std::back_inserter(out_data_list));
+  }
+  gzip::Data out_data = gzip::ExpandDataList(out_data_list);
+  EXPECT_EQ(0, strcmp(out_data->ptr, SOURCE_STRING));
 }
