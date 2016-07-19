@@ -1,7 +1,7 @@
 A zlib c++ wrap library
 =======================
 
-This is a c++ library which will be able to compress/decompress your data buffers. It is a bunch of wrap classes of C library zlib. So you need to install zlib developer files in your system before you compile this library it.
+This is a c++ library which will be able to compress/decompress your data buffers. It is a bunch of wrap classes of C library zlib. So you need to install zlib developer files in your system before you compile this library.
 
 Compile and install instructions
 ================================
@@ -96,6 +96,12 @@ if (!comp.IsSucc()) {
 }
 ```
 
+You can construct a compressor with compression level. `gzip::Comp::Level` contains `Level::Default`, `Level::Min`, `Level::Level_[1~8]` and `Level::Max`. `Level::Min` means does no compression at all, `Level::Max` means greatest compression but slowest execution. Use `Level::Default` equals to `Level::Level_6`.
+
+```
+gzip::Comp comp(gzip::Comp::Level::Max);
+```
+
 ### Compress data
 
 Make a `gzip::Data` object and pass it to `gzip::Comp::Process` to compress data buffer. If you are compressing the last data block, please pass `true` for the latest parameter.
@@ -119,7 +125,7 @@ Also you should check the object is good or not.
 
 ```
 if (!decomp.IsSucc()) {
-  // Failed to create compressor.
+  // Failed to create decompressor.
   return;
 }
 ```
@@ -178,3 +184,5 @@ Running main() from gtest_main.cc
 ```
 
 Review `test.cc` to get more help there or you can just send me a message if you have any question about this library.
+
+Check [zlib developer document](http://www.zlib.net/zlib_how.html) to get more information. If you improve or fix bug, Any one is welcome to submit a pull request.
