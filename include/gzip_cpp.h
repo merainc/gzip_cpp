@@ -17,6 +17,7 @@ struct DataBlock {
 typedef std::shared_ptr<DataBlock> Data;
 typedef std::list<Data> DataList;
 
+Data AllocateData(std::size_t size);
 Data ExpandDataList(const DataList &data_list);
 
 /// Compress processor.
