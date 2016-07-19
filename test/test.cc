@@ -31,3 +31,13 @@ TEST(gzip, decompress) {
   gzip::Data out_data = gzip::ExpandDataList(out_data_list);
   EXPECT_EQ(0, strcmp(out_data->ptr, SOURCE_STRING));
 }
+
+TEST(gzip, invalid_decompress) {
+  gzip::Decomp decomp;
+  EXPECT_TRUE(decomp.IsSucc());
+  gzip::Data data = gzip::AllocateData(10);
+  memcpy(data->ptr, "0123456789", 10);
+  bool succ;
+  std::tie(succ, std::ignore) = decomp.Process(data);
+  EXPECT_TRUE(!succ);
+}
