@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.8.4)
 
 project(gzip_cpp)
 
+add_definitions(-std=c++11)
+
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -DDEBUG")
+
 include_directories(
   "/usr/local/include"
   "./include"
@@ -17,4 +21,7 @@ file(GLOB GOOGLE_TEST_SRCS
   "googletest/googletest/src/gtest-all.cc"
   "googletest/googletest/src/gtest_main.cc"
   )
-add_executable(gzip_cpp_test ${GZIP_TEST_SRCS} ${GOOGLE_TEST_SRCS})
+add_executable(gzip_cpp_test ${GZIP_SRCS} ${GZIP_TEST_SRCS} ${GOOGLE_TEST_SRCS})
+
+find_package(ZLIB REQUIRED)
+target_link_libraries(gzip_cpp_test ${ZLIB_LIBRARIES})
