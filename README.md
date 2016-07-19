@@ -1,7 +1,7 @@
-A zlib c++ wrap library
+A zlib C++ wrap library
 =======================
 
-This is a c++ library which will be able to compress/decompress your data buffers. It is a bunch of wrap classes of C library zlib. So you need to install zlib developer files in your system before you compile this library.
+This is a c++ library which will be able to compress/decompress your data buffers. It is a bunch of wrap classes of C library zlib. You need install zlib developer files to your system before you compile library.
 
 Compile and install instructions
 ================================
@@ -27,7 +27,7 @@ Compile and install library
 Clone source
 
 ```
-git clone https://git.meradev.com/mera_server/zlib_cpp.git
+git clone https://github.com/merainc/gzip_cpp.git
 ```
 
 Compile source
