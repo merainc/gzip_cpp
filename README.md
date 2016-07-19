@@ -153,7 +153,7 @@ if (!succ) {
 Get more information from test.cc
 ---------------------------------
 
-I have built a test case (by using Google Test) and you can run the test after you compiled the source code.
+I have built a test case (by using Google Test) and you can run the test after you compile the source code.
 
 ```
 ./gzip_cpp_test
