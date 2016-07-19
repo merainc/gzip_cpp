@@ -183,6 +183,4 @@ Running main() from gtest_main.cc
 [  PASSED  ] 5 tests.
 ```
 
-Review `test.cc` to get more help there or you can just send me a message if you have any question about this library.
-
-Check [zlib developer document](http://www.zlib.net/zlib_how.html) to get more information. If you improve library or fix bug, you are welcome to submit a pull request.
+Review `test.cc` to get more help there or you can just send me a message if you have any question about this library. Check [zlib C library document](http://www.zlib.net/zlib_how.html) to get more information. If you improve library or fix bug, you are welcome to submit a pull request.
