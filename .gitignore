@@ -8,6 +8,7 @@ Makefile
 cmake_install.cmake
 gzip_cpp_test
 libgzip_cpp.a
+install_manifest.txt
 
 # Other temporary files
 *.swp
