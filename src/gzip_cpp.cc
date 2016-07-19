@@ -59,6 +59,10 @@ DataList Comp::Process(const char *buffer, std::size_t size, bool last_block) {
   return out_data_list;
 }
 
+DataList Comp::Process(const Data &data, bool last_block) {
+  return Process(data->ptr, data->size, last_block);
+}
+
 Decomp::Decomp() {
   memset(&zs_, 0, sizeof(zs_));
   int ret = inflateInit(&zs_);

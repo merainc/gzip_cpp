@@ -50,6 +50,9 @@ class Comp {
   DataList Process(const char *buffer, std::size_t size,
                    bool last_block = false);
 
+  /// Compress incoming data to dataBlock list.
+  DataList Process(const Data &data, bool last_block = false);
+
  private:
   Level level_;
   z_stream zs_;
