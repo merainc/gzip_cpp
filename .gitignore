@@ -1,9 +1,14 @@
+# MacOSX temporary files
 .DS_Store
-*.swp
-build/
+
+# CMake temporary files
 CMakeCache.txt
 CMakeFiles/
 Makefile
 cmake_install.cmake
 gzip_cpp_test
 libgzip_cpp.a
+
+# Other temporary files
+*.swp
+*.pyc
