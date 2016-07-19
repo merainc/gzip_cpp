@@ -45,8 +45,8 @@ make install
 How to use?
 ===========
 
-Add header files.
------------------
+Add header files
+----------------
 
 ```
 #include <gzip_cpp/gzip_cpp.h>
@@ -96,7 +96,7 @@ if (!comp.IsSucc()) {
 }
 ```
 
-### Compress data.
+### Compress data
 
 Make a `gzip::Data` object and pass it to `gzip::Comp::Process` to compress data buffer. If you are compressing the last data block, please pass `true` for the latest parameter.
 
@@ -124,7 +124,7 @@ if (!decomp.IsSucc()) {
 }
 ```
 
-### Decompress data.
+### Decompress data
 
 To decompress data by passing a `gzip::Data` object to method `gzip::Decomp::Process`, the method returns `std::tuple<bool, gzip::DataList>` as outcome value. The first `boolean` value is telling you the uncompress process succeed or not, second `gzip::DataList` value holds the processed data if succeed.
 
