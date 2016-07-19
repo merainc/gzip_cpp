@@ -26,9 +26,9 @@ Data ExpandDataList(const DataList &data_list) {
   return out_data;
 }
 
-Comp::Comp() {
+Comp::Comp(Level level) : level_(level) {
   memset(&zs_, 0, sizeof(zs_));
-  int ret = deflateInit(&zs_, -1);
+  int ret = deflateInit(&zs_, static_cast<int>(level_));
   init_ok_ = ret == Z_OK;
 }
 

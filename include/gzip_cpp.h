@@ -22,8 +22,22 @@ Data ExpandDataList(const DataList &data_list);
 /// Compress processor.
 class Comp {
  public:
+   enum class Level {
+     Default = -1,
+     Min = 0,
+     Level_1 = 1,
+     Level_2 = 2,
+     Level_3 = 3,
+     Level_4 = 4,
+     Level_5 = 5,
+     Level_6 = 6,
+     Level_7 = 7,
+     Level_8 = 8,
+     Max = 9
+   };
+ public:
   /// Construct a compressor.
-  Comp();
+  explicit Comp(Level level = Level::Default);
 
   /// Destructor, will release z_stream.
   ~Comp();
@@ -36,6 +50,7 @@ class Comp {
                    bool last_block = false);
 
  private:
+  Level level_;
   z_stream zs_;
   bool init_ok_;
 };
