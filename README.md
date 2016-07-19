@@ -185,4 +185,4 @@ Running main() from gtest_main.cc
 
 Review `test.cc` to get more help there or you can just send me a message if you have any question about this library.
 
-Check [zlib developer document](http://www.zlib.net/zlib_how.html) to get more information. If you improve or fix bug, Any one is welcome to submit a pull request.
+Check [zlib developer document](http://www.zlib.net/zlib_how.html) to get more information. If you improve library or fix bug, you are welcome to submit a pull request.
