@@ -11,7 +11,7 @@ Install zlib developer files first
 
 ### MacOSX
 
-Please install Xcode to your OSX system and zlib can be found.
+Please install `Command-line tools` on your OSX system and zlib can be found.
 
 ### Debian
 
