@@ -1,5 +1,7 @@
 #include "gzip_cpp.h"
 
+#include <cstring>
+
 namespace gzip {
 
 const int MAX_CHUNK_SIZE = 1024 * 16;
