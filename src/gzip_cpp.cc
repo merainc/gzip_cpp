@@ -6,6 +6,8 @@ namespace gzip {
 
 const int MAX_CHUNK_SIZE = 1024 * 16;
 
+const int WINDOW_BITS = 15;
+
 /// Allocate memory to DataBlock and assign to a shared_ptr object.
 Data AllocateData(std::size_t size) {
   Data data(new DataBlock, [](DataBlock *p) { delete[] p->ptr; });
@@ -28,9 +30,17 @@ Data ExpandDataList(const DataList &data_list) {
   return out_data;
 }
 
-Comp::Comp(Level level) : level_(level) {
+Comp::Comp(Level level, bool gzip_header)
+    : level_(level) {
   memset(&zs_, 0, sizeof(zs_));
-  int ret = deflateInit(&zs_, static_cast<int>(level_));
+  int windowBits = WINDOW_BITS;
+  if (gzip_header) {
+    // Configurate the compressor to write a simple gzip header and trailer
+    // around the compressed data instead of a zlib wrapper
+    windowBits += 16;
+  }
+  int ret = deflateInit2(&zs_, static_cast<int>(level_), Z_DEFLATED, windowBits,
+                         8, Z_DEFAULT_STRATEGY);
   init_ok_ = ret == Z_OK;
 }
 
@@ -67,7 +77,9 @@ DataList Comp::Process(const Data &data, bool last_block) {
 
 Decomp::Decomp() {
   memset(&zs_, 0, sizeof(zs_));
-  int ret = inflateInit(&zs_);
+  // Enable zlib and gzip decoding with automatic header detection
+  int windowBits = WINDOW_BITS + 32;
+  int ret = inflateInit2(&zs_, windowBits);
   init_ok_ = ret == Z_OK;
 }
 
