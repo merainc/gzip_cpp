@@ -38,7 +38,7 @@ class Comp {
    };
  public:
   /// Construct a compressor.
-  explicit Comp(Level level = Level::Default);
+  explicit Comp(Level level = Level::Default, bool gzip_header = false);
 
   /// Destructor, will release z_stream.
   ~Comp();
