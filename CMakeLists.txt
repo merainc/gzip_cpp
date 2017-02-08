@@ -9,7 +9,7 @@ else()
   set(CMAKE_CXX_STANDARD 11)
 endif()
 
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
 find_package(ZLIB REQUIRED)
 
