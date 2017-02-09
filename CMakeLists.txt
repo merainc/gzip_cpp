@@ -33,9 +33,9 @@ file(GLOB GOOGLE_TEST_SRCS
   "googletest/googletest/src/gtest_main.cc"
   )
 add_executable(gzip_cpp_test EXCLUDE_FROM_ALL ${GZIP_TEST_SRCS} ${GOOGLE_TEST_SRCS})
+target_link_libraries(gzip_cpp_test gzip_cpp)
 add_dependencies(check gzip_cpp_test)
 
-target_link_libraries(gzip_cpp_test gzip_cpp ${ZLIB_LIBRARIES} pthread)
 
 file(GLOB INCLUDE_FILES "include/*.h")
 install(FILES ${INCLUDE_FILES} DESTINATION "include/gzip_cpp")
