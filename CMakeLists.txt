@@ -15,6 +15,8 @@ find_package(ZLIB REQUIRED)
 
 include_directories(
   "include"
+  "googletest/googletest/include"
+  "googletest/googletest/"
   ${ZLIB_INCLUDE_DIRS}
   )
 
@@ -24,11 +26,6 @@ add_library(gzip_cpp ${GZIP_SRCS})
 target_link_libraries(gzip_cpp ${ZLIB_LIBRARIES} pthread)
 
 add_custom_target(check)
-
-include_directories(
-  "googletest/googletest/include"
-  "googletest/googletest/"
-  )
 
 file(GLOB GZIP_TEST_SRCS "test/*.cc")
 file(GLOB GOOGLE_TEST_SRCS
