@@ -10,7 +10,10 @@ const int WINDOW_BITS = 15;
 
 /// Allocate memory to DataBlock and assign to a shared_ptr object.
 Data AllocateData(std::size_t size) {
-  Data data(new DataBlock, [](DataBlock *p) { delete[] p->ptr; });
+  Data data(new DataBlock, [](DataBlock *p) { 
+    delete[] p->ptr;
+    delete p;
+  });
   data->ptr = new char[size];
   data->size = size;
   return data;
