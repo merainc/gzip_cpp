@@ -70,7 +70,7 @@ typedef std::shared_ptr<DataBlock> Data;
 
 ### Allocate memory
 
-Invoke `gzip::AllocateMemory(std::size_t size)` to allocate data buffer and stores to `gzip::Data`. `gzip::Data` is a smart pointer it will release buffer automatically, please do not use `delete[] Data()->ptr` to delete memory.
+Invoke `gzip::AllocateData(std::size_t size)` to allocate data buffer and stores to `gzip::Data`. `gzip::Data` is a smart pointer it will release buffer automatically, please do not use `delete[] Data()->ptr` to delete memory.
 
 ### Memory list
 
